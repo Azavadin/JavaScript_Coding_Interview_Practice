@@ -1,0 +1,46 @@
+function rangeLookup(tree, intervale) {
+   if(tree == null)
+    return;
+  if(tree.label < intervale[0])
+     rangeLookup(tree.left, intervale);
+  else if(tree.label > intervale[1])
+    rangeLookup(tree.right, intervale);
+  else{
+    result.push(tree.label);
+    rangeLookup(tree.left, intervale);
+    rangeLookup(tree.right, intervale);
+  }
+}
+
+var result = [];
+
+function BstNode(value){
+  this.label = value;
+  this.left = null;
+  this.right = null;
+}
+
+var treeNode = new BstNode(19);
+var node2 = new BstNode(17);
+var node3 = new BstNode(21);
+var node4 = new BstNode(12);
+var node5 = new BstNode(18);
+var node6 = new BstNode(13);
+var node7 = new BstNode(21);
+var node8 = new BstNode(23);
+var node9 = new BstNode(22);
+var node10 = new BstNode(25);
+var node11 = new BstNode(27);
+
+treeNode.left = node2;
+treeNode.right = node3;
+node2.left = node4;
+node2.right = node5;
+node4.right = node6;
+node7.right = node8;
+node8.left = node9;
+node8.right = node10;
+node10.right = node11;
+
+rangeLookup(treeNode, [10, 25]);
+console.log(result);

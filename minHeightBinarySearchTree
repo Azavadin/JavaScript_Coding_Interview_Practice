@@ -1,0 +1,22 @@
+function minHeightBinarySearchTree(array){
+  return helper(array, 0, array.length);
+}
+
+function Node(data){
+  this.data = data;
+  this.lc = null;
+  this.rc = null;
+}
+function helper(array, low, high){
+  if(low >= high)
+    return null;
+  var mid = Math.floor((high - low) / 2) + low;
+  return {
+    data : array[mid],
+    lc : helper(array, low, mid),
+    rc : helper(array, mid+1, high)
+  }
+}
+
+arr = [2,4,6,7,12,13,19,20,24]
+console.log(minHeightBinarySearchTree(arr));
